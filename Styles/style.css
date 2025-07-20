@@ -13,8 +13,8 @@ body {
   font-size: 16px; /* Базовый размер шрифта */
   line-height: 1.6;
   margin: 0; /* Убираем внешние отступы у body, чтобы контролировать их сами */
-  background-color: #f8f5f0;
-  color: #333;
+  background-color: snow;
+  color: darkgray;
   display: flex; /* Делаем body Flex-контейнером */
   flex-direction: column; /* Элементы будут располагаться сверху вниз */
   min-height: 100vh; /* **Гарантируем, что body занимает всю высоту экрана** */
@@ -37,24 +37,24 @@ body {
   z-index: 20;
 }
 
-/* Áàçîâûå ñòèëè ñëîÿ, çàòåìíåíèÿ è ìîäàëüíîãî îêíà */
+/* "Базовые стили слоя, затемнения и модального окна" */
 .overlay {
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   display: none;
-  /* ôîí çàòåìíåíèÿ */
+  /* фон затемнения */
   background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
 }
 
-/* àêòèâèðóåì ñëîé çàòåìíåíèÿ */
+/* активируем слой затемнения */
 .overlay:target {
   display: block;
 }
 
-/* ñòèëè ìîäàëüíîãî îêíà */
+/* стили модального окна */
 .popup {
   top: -100%;
   right: 0;
@@ -65,15 +65,15 @@ body {
   width: 13%;
   min-width: 300px;
   max-width: 600px;
-  /* ôèêñèðîâàííîå ïîçèöèîíèðîâàíèå, îêíî ñòàáèëüíî ïðè ïðîêðóòêå */
+  /* фиксированное позиционирование, окно стабильно при прокрутке */
   position: fixed;
   padding: 15px;
   border-radius: 5px;
-  border: 1px solid #383838;
-  background: #0892d0;
+  border: 1px solid darkgray;
+  background: deepskyblue;
 }
 
-/* àêòèâèðóåì ìîäàëüíûé áëîê */
+/* активируем модальный блок */
 .overlay:target + .popup {
   transform: translate(-50%, 0);
   top: 20%;
@@ -130,7 +130,7 @@ body {
   /* max-width: 1200px; */
   margin: 20px auto;
   /* Центрируем блок с разворотом и даем отступы */
-  background-color: #fff;
+  background-color: white;
   padding: 5px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -156,7 +156,7 @@ body {
 
 /* --- СТИЛИ ДЛЯ БЛОКА С ИЗОБРАЖЕНИЕМ И ТЕКСТОМ (.block) --- */
 .block {
-  border: 1px solid #ddd;
+  border: 1px solid lightgray;
   text-align: center;
   padding: 5px;
   font-size: large;
@@ -200,7 +200,7 @@ pre {
   line-height: 1.5;
   font-family: Arial, sans-serif; /* Устанавливаем Arial */
   /* font-weight: bold;  */
-  color: #000; /* Более тёмный цвет для контраста */
+  color: black; /* Более тёмный цвет для контраста */
 }
 
 /* Стили для навигационных кнопок внизу */
@@ -239,12 +239,12 @@ pre {
   -webkit-border-radius: 8px;
   border-radius: 8px;
   /* box shadow */
-  -moz-box-shadow: 2px 2px 3px #e6e6e6;
-  -webkit-box-shadow: 2px 2px 3px #e6e6e6;
-  box-shadow: 2px 2px 3px #e6e6e6;
+  -moz-box-shadow: 2px 2px 3px gainsboro;
+  -webkit-box-shadow: 2px 2px 3px gainsboro;
+  box-shadow: 2px 2px 3px gainsboro;
   /* other settings */
   background-color: royalblue;
-  border: solid 3px #d6d6d6;
+  border: solid 3px lightgray;
   color: white;
   display: none;
   font-family: Helvetica, Arial, sans-serif;
@@ -265,10 +265,9 @@ pre {
     padding: 15px;
     margin: 15px auto; /* Уменьшаем отступы на мобильных */
   }
-  body {
-    /* ЭТОТ НОВЫЙ БЛОК */
-    background-color: #ff00ff !important; /* ОЧЕНЬ ЯРКИЙ ФИОЛЕТОВЫЙ ЦВЕТ */
-  }
+  /* body {
+    background-color: magenta !important; 
+  } */
   .textcols-item {
     width: 95%; /* Каждая колонка занимает почти всю ширину */
     min-width: unset; /* Сбрасываем минимальную ширину */
