@@ -158,77 +158,126 @@ function playEssay() {
     document.getElementById(id).click();
 }
 /* ===================================================================== */
-$(document).ready(function () {
-  var el = $("#nav_list_3 li a");
-  $('#nav_list_3 li:has("ul")').append("<span></span>");
-  el.click(function () {
-    $("a[href]").css("background", "Mintcream");
-    var checkedElement = $(this).next(),
-      visibleElement = $("#nav_list_3 ul:visible");
+// $(document).ready(function () {
+//   var el = $("#nav_list_3 li a");
+//   $('#nav_list_3 li:has("ul")').append("<span></span>");
+//   el.click(function () {
+//     $("a[href]").css("background", "Mintcream");
+//     var checkedElement = $(this).next(),
+//       visibleElement = $("#nav_list_3 ul:visible");
 
-    /* Sam */
-    if (checkedElement.is("ul") && visibleElement.is("ul"))
-      visibleElement
-        .stop()
-        .animate(
-          {
-            height: "toggle",
-          },
-          500
-        )
-        .parent()
-        .removeClass("active");
+//     /* Sam */
+//     if (checkedElement.is("ul") && visibleElement.is("ul"))
+//       visibleElement
+//         .stop()
+//         .animate(
+//           {
+//             height: "toggle",
+//           },
+//           500
+//         )
+//         .parent()
+//         .removeClass("active");
 
-    if (checkedElement.is("ul") && !checkedElement.is(":visible")) {
-      checkedElement
-        .stop()
-        .animate(
-          {
-            height: "toggle",
-          },
-          500
-        )
-        .parent()
-        .toggleClass("active");
-      return false;
-    } else $(this).css("background", "Linen");
+//     if (checkedElement.is("ul") && !checkedElement.is(":visible")) {
+//       checkedElement
+//         .stop()
+//         .animate(
+//           {
+//             height: "toggle",
+//           },
+//           500
+//         )
+//         .parent()
+//         .toggleClass("active");
+//       return false;
+//     } else $(this).css("background", "Linen");
 
-    if (checkedElement.is("ul") && checkedElement.is(":visible")) {
-      return false;
+//     if (checkedElement.is("ul") && checkedElement.is(":visible")) {
+//       return false;
+//     }
+//   });
+// });
+// $(document).ready(function () {
+//   //            https://electrictoolbox.com/style-html-anchor-title-jquery-css/
+//   $('a[href="#t"]').each(function () {
+//     $("body").append('<div id="anchorTitle"></div>');
+//     var a = $(this);
+//     a.data("title", a.attr("title"))
+//       .removeAttr("title")
+//       .hover(
+//         function () {
+//           if (a.attr("href") == "#t") {
+//             showAnchorTitle(a, a.data("title"));
+//           }
+//         },
+//         function () {
+//           hideAnchorTitle();
+//         }
+//       );
+//   });
+// });
+
+// function showAnchorTitle(element, text) {
+//   var offset = element.offset();
+//   $("#anchorTitle")
+//     .css({
+//       top: offset.top + element.outerHeight() - 4 + "px",
+//       left: offset.left + 4 + "px",
+//     })
+//     .html(text)
+//     .show();
+// }
+
+// function hideAnchorTitle() {
+//   $("#anchorTitle").hide();
+// }
+// Функция для сбора и отображения авторских комментариев
+function setupAuthorComments() {
+  // Находим все <a> элементы, у которых есть атрибут 'title'
+  // Мы предполагаем, что именно 'title' содержит авторский комментарий
+  // const commentLinks = document.querySelectorAll("a[title]");
+  const authorCommentSups = document.querySelectorAll(
+    "sup[data-author-comment]"
+  );
+  const authorCommentsList = document.getElementById("author-comments-list");
+  const authorCommentsSection = document.getElementById(
+    "author-comments-section"
+  );
+  let commentCount = 0;
+
+  // Проверяем, существуют ли целевые элементы в HTML
+  if (!authorCommentsList || !authorCommentsSection) {
+    console.warn(
+      "Ошибка: Контейнеры для авторских комментариев (#author-comments-list или #author-comments-section) не найдены в HTML."
+    );
+    return;
+  }
+
+  // Очищаем список перед добавлением (на случай повторного вызова или старого контента)
+  authorCommentsList.innerHTML = "";
+
+  authorCommentSups.forEach((supElement) => {
+    // Теперь мы перебираем <sup> элементы
+    const commentText = supElement.getAttribute("data-author-comment"); // Получаем текст из data-author-comment
+    const commentNumber = supElement.textContent.trim(); // Получаем номер из содержимого <sup>
+
+    if (commentText) {
+      commentCount++;
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `<strong>${commentNumber}.</strong> ${commentText}`;
+      authorCommentsList.appendChild(listItem);
+      // Здесь не нужно удалять атрибут, так как data-атрибуты не вызывают нативных подсказок
     }
   });
-});
-$(document).ready(function () {
-  //            https://electrictoolbox.com/style-html-anchor-title-jquery-css/
-  $('a[href="#t"]').each(function () {
-    $("body").append('<div id="anchorTitle"></div>');
-    var a = $(this);
-    a.data("title", a.attr("title"))
-      .removeAttr("title")
-      .hover(
-        function () {
-          if (a.attr("href") == "#t") {
-            showAnchorTitle(a, a.data("title"));
-          }
-        },
-        function () {
-          hideAnchorTitle();
-        }
-      );
-  });
-});
 
-function showAnchorTitle(element, text) {
-  var offset = element.offset();
-  $("#anchorTitle")
-    .css({
-      top: offset.top + element.outerHeight() - 4 + "px",
-      left: offset.left + 4 + "px",
-    })
-    .html(text)
-    .show();
+  // Показываем или скрываем раздел комментариев в зависимости от их наличия
+  if (commentCount > 0) {
+    authorCommentsSection.style.display = "block"; // Показываем раздел
+  } else {
+    authorCommentsSection.style.display = "none"; // Скрываем раздел
+  }
 }
 
-function hideAnchorTitle() {
-  $("#anchorTitle").hide();
-}
+// Вызываем функцию после полной загрузки DOM-дерева
+document.addEventListener("DOMContentLoaded", setupAuthorComments);

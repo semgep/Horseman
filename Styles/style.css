@@ -308,3 +308,43 @@ pre {
     gap: 10px;
   } */
 }
+/* --- СТИЛИ ДЛЯ РАЗДЕЛА АВТОРСКИХ КОММЕНТАРИЕВ --- */
+#author-comments-section {
+  display: none; /* Скрываем по умолчанию, пока JS не найдет комментарии */
+  margin-top: 30px;
+  padding: 15px;
+  border-top: 1px solid #ccc;
+  background-color: #f0f0f0; /* Очень светло-серый фон */
+  font-size: 0.9em;
+  line-height: 1.4;
+  max-width: 1200px; /* Ограничиваем ширину, чтобы соответствовать основному контенту */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Легкая тень */
+}
+
+#author-comments-section h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #555;
+  text-align: center;
+}
+
+#author-comments-list {
+  list-style: none; /* Убираем стандартные маркеры списка */
+  padding: 0;
+  margin: 0;
+}
+
+#author-comments-list li {
+  margin-bottom: 10px; /* Отступ между комментариями */
+  padding-left: 25px; /* Отступ для номера */
+  text-indent: -25px; /* Для висячего отступа номера */
+  color: #444;
+}
+
+#author-comments-list li strong {
+  color: #000; /* Цвет номера комментария */
+  margin-right: 5px;
+}
