@@ -1,0 +1,307 @@
+* {
+  box-sizing: border-box; /* Важно: padding и border включаются в общую ширину/высоту элемента */
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif; /* Устанавливаем Arial как основной шрифт */
+  font-size: 16px; /* Базовый размер шрифта */
+  line-height: 1.6;
+  margin: 0; /* Убираем внешние отступы у body, чтобы контролировать их сами */
+  background-color: #f8f5f0;
+  color: #333;
+  display: flex; /* Делаем body Flex-контейнером */
+  flex-direction: column; /* Элементы будут располагаться сверху вниз */
+  min-height: 100vh; /* **Гарантируем, что body занимает всю высоту экрана** */
+  justify-content: space-between; /* Распределяем пространство между содержимым и подвалом/шапкой */
+  align-items: center; /* Центрируем содержимое по горизонтали */
+}
+
+.indent {
+  text-indent: 25px;
+  text-align: justify;
+}
+
+#PopUpImage {
+  display: none;
+  position: absolute;
+  background: lavender;
+  border: solid blue 2px;
+  padding: 5px;
+  border-radius: 6px 6px 6px 6px;
+  z-index: 20;
+}
+
+/* Áàçîâûå ñòèëè ñëîÿ, çàòåìíåíèÿ è ìîäàëüíîãî îêíà */
+.overlay {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  /* ôîí çàòåìíåíèÿ */
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+}
+
+/* àêòèâèðóåì ñëîé çàòåìíåíèÿ */
+.overlay:target {
+  display: block;
+}
+
+/* ñòèëè ìîäàëüíîãî îêíà */
+.popup {
+  top: -100%;
+  right: 0;
+  left: 50%;
+  font-size: 14px;
+  z-index: 20;
+  margin: 0;
+  width: 13%;
+  min-width: 300px;
+  max-width: 600px;
+  /* ôèêñèðîâàííîå ïîçèöèîíèðîâàíèå, îêíî ñòàáèëüíî ïðè ïðîêðóòêå */
+  position: fixed;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #383838;
+  background: #0892d0;
+}
+
+/* àêòèâèðóåì ìîäàëüíûé áëîê */
+.overlay:target + .popup {
+  transform: translate(-50%, 0);
+  top: 20%;
+}
+
+.close {
+  top: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  /* border-radius: 5px; */
+  position: absolute;
+  background-color: red;
+  text-align: center;
+  text-decoration: none;
+  font: bold 12px/14px Arial;
+}
+
+.close:before {
+  content: "X";
+}
+
+/*---------------------*/
+#winPopup,
+#imgPopup {
+  /*    display: none;*/
+  position: absolute;
+  background: lavender;
+  border: solid blue 2px;
+  border-radius: 6px 6px 6px 6px;
+  padding: 5px;
+  z-index: 20;
+  font: italic 14px arial;
+}
+
+#PopUpTrack {
+  display: none;
+  position: absolute;
+  background: lavender;
+  border: solid blue 2px;
+  border-radius: 6px 6px 6px 6px;
+  padding: 5px;
+  z-index: 20;
+  font: italic 14px arial;
+}
+
+/* --- СТИЛИ ДЛЯ КОНТЕЙНЕРА СТРАНИЦ КНИГИ (.textcols) --- */
+.textcols {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  align-items: stretch; /* Заставляем textcols-item растягиваться на всю высоту *** */
+  /* max-width: 1200px; */
+  margin: 20px auto;
+  /* Центрируем блок с разворотом и даем отступы */
+  background-color: #fff;
+  padding: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  flex-grow: 1; /* Позволяем этому блоку занимать всё доступное вертикальное пространство */
+  width: 100%; /* Занимаем всю доступную ширину до max-width */
+}
+
+.textcols-item {
+  flex: 1;
+  min-width: unset; /*400px; */
+  display: flex; /* Делаем item тоже Flex-контейнером */
+  flex-direction: column; /* Элементы внутри item будут друг под другом */
+  /* justify-content: center;  */
+  /* **Центрируем содержимое (block) по вертикали** */
+  align-items: center; /* **Центрируем содержимое (block) по горизонтали** */
+  /* padding: 0 10px;  */
+  /* Небольшие внутренние отступы, чтобы содержимое не прилипало к краям */
+}
+
+.textcols .textcols-item:first-child {
+  margin-right: 0;
+}
+
+/* --- СТИЛИ ДЛЯ БЛОКА С ИЗОБРАЖЕНИЕМ И ТЕКСТОМ (.block) --- */
+.block {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 5px;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  /* Распределяем пространство между img и blockquote */
+  height: 100%; /* Важно: block занимает всю высоту textcols-item */
+  width: 100%;
+  /* Занимает всю доступную ширину внутри textcols-item */
+  /* max-width: 450px;  */
+  /* Ограничиваем максимальную ширину для каждого блока, чтобы не растягивался слишком сильно */
+}
+
+/* --- СТИЛИ ДЛЯ ИЗОБРАЖЕНИЙ --- */
+.block img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  /* margin: 0 auto 10px auto; */
+}
+
+/* --- СТИЛИ ДЛЯ ТЕКСТА КНИГИ (blockquote и pre) --- */
+blockquote {
+  margin: 0 !important;
+  padding: 0 5px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* **Центрируем текст по вертикали внутри blockquote** */
+  align-items: center; /* **Центрируем текст по горизонтали внутри blockquote** */
+  height: 100%; /* Занимаем всю высоту, чтобы центрировать */
+}
+
+pre {
+  margin: 0 !important;
+  white-space: pre-wrap;
+  text-align: center; /* **Центрируем каждую строку текста по горизонтали** */
+  font-size: 1.1em;
+  line-height: 1.5;
+  font-family: Arial, sans-serif; /* Устанавливаем Arial */
+  /* font-weight: bold;  */
+  color: #000; /* Более тёмный цвет для контраста */
+}
+
+/* Стили для навигационных кнопок внизу */
+.navigation-bottom {
+  text-align: center;
+  /* margin-top: 30px;
+  margin-bottom: 20px; */
+  display: flex; /* Используем flexbox для кнопок */
+  justify-content: space-between; /* Разносим кнопки по краям */
+  align-items: center; /* Выравниваем по центру по вертикали */
+  max-width: 1200px; /* Ограничиваем ширину навигации */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px; /* Небольшие отступы, чтобы кнопки не прилипали к краям */
+  width: 100%; /* Занимает всю доступную ширину до max-width */
+}
+
+.navigation-bottom img {
+  height: 20px; /* Фиксированная высота для стрелок */
+  width: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.navigation-bottom img:hover {
+  opacity: 1;
+}
+
+.scale:hover {
+  transform: scale(1.5) translateY(20%);
+}
+
+#anchorTitle {
+  /* border radius */
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  /* box shadow */
+  -moz-box-shadow: 2px 2px 3px #e6e6e6;
+  -webkit-box-shadow: 2px 2px 3px #e6e6e6;
+  box-shadow: 2px 2px 3px #e6e6e6;
+  /* other settings */
+  background-color: royalblue;
+  border: solid 3px #d6d6d6;
+  color: white;
+  display: none;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.3;
+  max-width: 300px;
+  padding: 5px 7px;
+  position: absolute;
+}
+/* Медиа-запросы для адаптивного дизайна */
+@media (max-width: 900px) {
+  body {
+    margin: 10px; /* Уменьшаем общий отступ на мобильных */
+  }
+
+  .textcols {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 15px;
+    margin: 15px auto; /* Уменьшаем отступы на мобильных */
+  }
+
+  .textcols-item {
+    width: 98%;
+    min-width: unset;
+    padding: 0; /* Убираем горизонтальный padding, т.к. width уже 95% */
+  }
+
+  .block {
+    padding: 5px; /* Меньше внутренний отступ для блока */
+    max-width: 100%; /* Позволяем ему занимать всю ширину item */
+  }
+
+  blockquote {
+    padding: 0 2px; /* Меньше padding для текста на мобильных */
+  }
+
+  .navigation-bottom {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .navigation-bottom img {
+    height: 25px; /* Ещё чуть меньше стрелки на узких экранах */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    margin: 5px;
+  }
+  .navigation-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
