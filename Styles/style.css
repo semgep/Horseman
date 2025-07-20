@@ -254,8 +254,6 @@ pre {
   padding: 5px 7px;
   position: absolute;
 }
-/* Styles/style.css */
-
 /* --- МЕДИА-ЗАПРОСЫ ДЛЯ АДАПТИВНОСТИ --- */
 /* Изменяем медиа-запрос для переключения колонок */
 @media (max-width: 500px) {
