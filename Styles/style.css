@@ -303,8 +303,9 @@ pre {
   body {
     margin: 5px;
   }
-  .navigation-bottom {
-    flex-direction: column; /* Кнопки друг под другом на совсем маленьких экранах */
+  /* Кнопки друг под другом на совсем маленьких экранах */
+  /* .navigation-bottom {
+    flex-direction: column;
     gap: 10px;
-  }
+  } */
 }
