@@ -296,7 +296,7 @@ pre {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 280px) {
   body {
     margin: 5px;
   }
