@@ -265,7 +265,10 @@ pre {
     padding: 15px;
     margin: 15px auto; /* Уменьшаем отступы на мобильных */
   }
-
+  body {
+    /* ЭТОТ НОВЫЙ БЛОК */
+    background-color: #ff00ff !important; /* ОЧЕНЬ ЯРКИЙ ФИОЛЕТОВЫЙ ЦВЕТ */
+  }
   .textcols-item {
     width: 95%; /* Каждая колонка занимает почти всю ширину */
     min-width: unset; /* Сбрасываем минимальную ширину */
