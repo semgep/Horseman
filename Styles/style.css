@@ -254,33 +254,32 @@ pre {
   padding: 5px 7px;
   position: absolute;
 }
-/* Медиа-запросы для адаптивного дизайна */
-@media (max-width: 900px) {
-  body {
-    margin: 10px; /* Уменьшаем общий отступ на мобильных */
-  }
+/* Styles/style.css */
 
+/* --- МЕДИА-ЗАПРОСЫ ДЛЯ АДАПТИВНОСТИ --- */
+/* Изменяем медиа-запрос для переключения колонок */
+@media (max-width: 768px) {
+  /* *** ИЗМЕНЕНИЕ: Было 900px, стало 768px *** */
   .textcols {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+    flex-direction: column; /* На маленьких экранах страницы идут друг под другом */
+    align-items: center; /* Центрируем их */
+    gap: 30px; /* Увеличиваем отступ между страницами */
     padding: 15px;
     margin: 15px auto; /* Уменьшаем отступы на мобильных */
   }
 
   .textcols-item {
-    width: 98%;
-    min-width: unset;
-    padding: 0; /* Убираем горизонтальный padding, т.к. width уже 95% */
+    width: 95%; /* Каждая колонка занимает почти всю ширину */
+    min-width: unset; /* Сбрасываем минимальную ширину */
   }
 
   .block {
-    padding: 5px; /* Меньше внутренний отступ для блока */
+    padding: 10px; /* Меньше внутренний отступ для блока */
     max-width: 100%; /* Позволяем ему занимать всю ширину item */
   }
 
   blockquote {
-    padding: 0 2px; /* Меньше padding для текста на мобильных */
+    padding: 0 5px; /* Меньше padding для текста на мобильных */
   }
 
   .navigation-bottom {
@@ -292,16 +291,19 @@ pre {
   }
 
   .navigation-bottom img {
-    height: 25px; /* Ещё чуть меньше стрелки на узких экранах */
+    height: 25px;
   }
 }
 
-@media (max-width: 280px) {
+/* Это дополнительный медиа-запрос для совсем узких экранов, 
+ который у вас уже был и влияет на body и навигацию,
+ его можно оставить для дополнительной тонкой настройки */
+@media (max-width: 480px) {
   body {
     margin: 5px;
   }
   .navigation-bottom {
-    flex-direction: column;
+    flex-direction: column; /* Кнопки друг под другом на совсем маленьких экранах */
     gap: 10px;
   }
 }
