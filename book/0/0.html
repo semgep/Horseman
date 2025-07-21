@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Медный всадник</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../book/images/Favicon.ico" type="image/x-icon" />
+    <!-- <link href="../../Styles/style.css" rel="stylesheet" />
+    <script src="../../JS/FuncJS.js"></script> -->
+    <style>
+      body,
+      html {
+        height: 100%; /* Занимаем всю высоту viewport */
+        margin: 0; /* Убираем стандартные отступы body */
+        overflow: hidden; /* Предотвращаем полосы прокрутки, если картинка немного больше */
+      }
+      body {
+        display: flex; /* Используем flexbox для центрирования */
+        justify-content: center; /* Центрируем по горизонтали */
+        align-items: center; /* Центрируем по вертикали */
+        background-color: #f0f0f0; /* Необязательно: цвет фона на случай, если картинка прозрачная или не занимает весь экран */
+      }
+      body > div {
+        width: 100%; /* Картинка займет всю ширину */
+        height: 100%; /* Картинка займет всю высоту */
+      }
+      body > div > a > img {
+        object-fit: contain; /* Масштабируем картинку с сохранением пропорций, чтобы вся была видна */
+        width: 100%; /* Занимает всю ширину родителя (div) */
+        height: 100%; /* Занимает всю высоту родителя (div) */
+        display: block; /* Убираем возможные строчные отступы у картинки */
+        margin: 0 auto; /* Центрируем (хотя при 100% ширины это не так заметно) */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <a href="../1/1.html"><img src="0.jpg" width="35%" /></a>
+    </div>
+  </body>
+</html>
