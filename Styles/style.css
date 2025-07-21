@@ -12,7 +12,6 @@ body {
   font-family: Arial, sans-serif; /* Устанавливаем Arial как основной шрифт */
   font-size: 16px; /* Базовый размер шрифта */
   line-height: 1.6;
-  margin: 0; /* Убираем внешние отступы у body, чтобы контролировать их сами */
   background-color: snow;
   color: darkgray;
   display: flex; /* Делаем body Flex-контейнером */
@@ -20,80 +19,6 @@ body {
   min-height: 100vh; /* **Гарантируем, что body занимает всю высоту экрана** */
   justify-content: space-between; /* Распределяем пространство между содержимым и подвалом/шапкой */
   align-items: center; /* Центрируем содержимое по горизонтали */
-}
-
-.indent {
-  text-indent: 25px;
-  text-align: justify;
-}
-
-#PopUpImage {
-  display: none;
-  position: absolute;
-  background: lavender;
-  border: solid blue 2px;
-  padding: 5px;
-  border-radius: 6px 6px 6px 6px;
-  z-index: 20;
-}
-
-/* "Базовые стили слоя, затемнения и модального окна" */
-.overlay {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: none;
-  /* фон затемнения */
-  background-color: rgba(0, 0, 0, 0.3);
-  position: fixed;
-}
-
-/* активируем слой затемнения */
-.overlay:target {
-  display: block;
-}
-
-/* стили модального окна */
-.popup {
-  top: -100%;
-  right: 0;
-  left: 50%;
-  font-size: 14px;
-  z-index: 20;
-  margin: 0;
-  width: 13%;
-  min-width: 300px;
-  max-width: 600px;
-  /* фиксированное позиционирование, окно стабильно при прокрутке */
-  position: fixed;
-  padding: 15px;
-  border-radius: 5px;
-  border: 1px solid darkgray;
-  background: deepskyblue;
-}
-
-/* активируем модальный блок */
-.overlay:target + .popup {
-  transform: translate(-50%, 0);
-  top: 20%;
-}
-
-.close {
-  top: 0;
-  right: 0;
-  width: 15px;
-  height: 15px;
-  /* border-radius: 5px; */
-  position: absolute;
-  background-color: red;
-  text-align: center;
-  text-decoration: none;
-  font: bold 12px/14px Arial;
-}
-
-.close:before {
-  content: "X";
 }
 
 #winPopup {
@@ -129,31 +54,13 @@ body {
 
 #closeWinPopup {
   position: absolute; /* Позиционируем относительно winPopup */
-  top: 10px; /* Отступ сверху */
-  right: 10px; /* Отступ справа */
+  top: 1px; /* Отступ сверху */
+  right: 4px; /* Отступ справа */
   cursor: pointer; /* Курсор-указатель при наведении */
-  background: none; /* Без фонового цвета */
-  border: none; /* Без рамки */
+  background: none;
+  border: none;
   font-size: 1.5em; /* Размер шрифта (для символа &times;) */
-  color: #555; /* Темно-серый цвет */
-  padding: 5px; /* Небольшой отступ вокруг символа */
-  line-height: 1; /* Выравнивание по центру */
   z-index: 1001;
-}
-
-#closeWinPopup:hover {
-  color: #000; /* Черный цвет при наведении */
-}
-
-#PopUpTrack {
-  display: none;
-  position: absolute;
-  background: lavender;
-  border: solid blue 2px;
-  border-radius: 6px 6px 6px 6px;
-  padding: 5px;
-  z-index: 20;
-  font: italic 14px arial;
 }
 
 /* --- СТИЛИ ДЛЯ КОНТЕЙНЕРА СТРАНИЦ КНИГИ (.textcols) --- */
@@ -198,12 +105,12 @@ body {
 
 /* --- СТИЛИ ДЛЯ ИЗОБРАЖЕНИЙ --- */
 .block img {
-  max-width: 100%;
   height: auto;
-  display: block;
-  /* margin: 0 auto 10px auto; */
+  display: block; /* Превращаем картинку в блочный элемент */
+  margin: 0 auto; /* Центрируем блочный элемент по горизонтали */
+  max-width: 100%; /* Убедимся, что картинка не выходит за пределы родителя */
+  height: auto; /* Сохраняем пропорции изображения */
 }
-
 /* --- СТИЛИ ДЛЯ ТЕКСТА КНИГИ (blockquote и pre) --- */
 blockquote {
   margin: 0 !important;
@@ -254,28 +161,6 @@ pre {
 .scale:hover {
   transform: scale(1.5) translateY(20%);
 }
-
-#anchorTitle {
-  /* border radius */
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-  /* box shadow */
-  -moz-box-shadow: 2px 2px 3px gainsboro;
-  -webkit-box-shadow: 2px 2px 3px gainsboro;
-  box-shadow: 2px 2px 3px gainsboro;
-  /* other settings */
-  background-color: royalblue;
-  border: solid 3px lightgray;
-  color: white;
-  display: none;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 1.3;
-  max-width: 300px;
-  padding: 5px 7px;
-  position: absolute;
-}
 /* --- МЕДИА-ЗАПРОСЫ ДЛЯ АДАПТИВНОСТИ --- */
 /* Изменяем медиа-запрос для переключения колонок */
 @media (max-width: 500px) {
@@ -316,7 +201,6 @@ pre {
     height: 25px;
   }
 }
-
 /* Это дополнительный медиа-запрос для совсем узких экранов, 
  который у вас уже был и влияет на body и навигацию,
  его можно оставить для дополнительной тонкой настройки */
@@ -333,59 +217,51 @@ pre {
 /* --- СТИЛИ ДЛЯ РАЗДЕЛА АВТОРСКИХ КОММЕНТАРИЕВ --- */
 #author-comments-section {
   display: none; /* Скрываем по умолчанию, пока JS не найдет комментарии */
-  margin-top: 30px;
-  padding: 15px;
-  border-top: 1px solid #ccc;
-  background-color: #f0f0f0; /* Очень светло-серый фон */
+  /* margin-top: 30px; */
+  padding-bottom: 15px;
+  /* border-top: 1px solid #ccc; */
+  /* background-color: #f0f0f0;  */
   font-size: 0.9em;
   line-height: 1.4;
   max-width: 1200px; /* Ограничиваем ширину, чтобы соответствовать основному контенту */
   margin-left: auto;
   margin-right: auto;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Легкая тень */
-}
-
-#author-comments-section h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: #555;
-  text-align: center;
+  /* border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); Легкая тень */
 }
 
 #author-comments-list {
-  list-style: none; /* Убираем стандартные маркеры списка */
-  padding: 0;
-  margin: 0;
+  list-style: none;
+  color: blue;
+
+  /* padding: 0;
+  margin: 0; */
 }
 
 #author-comments-list li {
-  margin-bottom: 10px; /* Отступ между комментариями */
-  padding-left: 25px; /* Отступ для номера */
-  text-indent: -25px; /* Для висячего отступа номера */
-  color: #444;
+  margin-bottom: 0px; /* Отступ между комментариями */
+  padding-left: 0px; /* Отступ для номера */
+  text-indent: 0px; /* Для висячего отступа номера */
+  /* color: blue; */
 }
 
-#author-comments-list li strong {
-  color: #000; /* Цвет номера комментария */
+/* #author-comments-list li strong {
+  color: #000; 
   margin-right: 5px;
-}
+} */
 /* Стили для кликабельного маркера [i] */
 .my-comment-trigger {
-  color: #0000ee; /* Стандартный синий цвет ссылок */
-  text-decoration: underline; /* Подчеркивание */
-  cursor: pointer; /* Курсор-указатель, чтобы показать интерактивность */
-  margin-left: 2px; /* Небольшой отступ от предыдущего элемента (опционально) */
-}
-
-.my-comment-trigger:hover {
-  color: #551a8b; /* Изменение цвета при наведении (как у посещенной ссылки) */
+  color: #0000ee;
   text-decoration: underline;
+  cursor: pointer;
+  margin-left: 2px;
 }
 
-/* Если вы хотите, чтобы [i] был выше (как верхний индекс),
- можно добавить vertical-align: super; непосредственно в CSS,
- а не инлайн-стилем в HTML */
+/* .my-comment-trigger:hover {
+  color: #551a8b;
+  text-decoration: underline;
+} */
+
 .my-comment-trigger span {
   vertical-align: super;
 }

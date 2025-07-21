@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="../../book/images/Favicon.ico" type="image/x-icon" />
     <link href="../../Styles/style.css" rel="stylesheet" />
-    <script src="../../JS/jquery.js"></script>
     <script src="../../JS/FuncJS.js"></script>
   </head>
 
@@ -25,11 +24,10 @@
 Лицо тихонько обращалось...
 И онъ по площади пустой
 Бѣжитъ, и слышитъ за собой -
-Какъ будто грома грохотанье —
+Какъ будто грома грохотанье -
 Тяжело-звонкое скаканье
 По потрясенной мостовой.
-                    </pre
-            >
+            </pre>
           </blockquote>
         </div>
       </div>
@@ -37,16 +35,22 @@
         <div class="block">
           <img src="49.jpg" class="scale" />
           <blockquote>
+            <pre>
 И, озаренъ луною блѣдной,
 Простерши руку въ вышинѣ,
 За нимъ несется Всадникъ Мѣдный
 На звонко скачущемъ конѣ.
-                </pre>
+                </pre
+            >
           </blockquote>
         </div>
       </div>
     </div>
-    <!-- 		prev / next -->
+
+    <div id="author-comments-section">
+      <ul id="author-comments-list"></ul>
+    </div>
+
     <div class="navigation-bottom">
       <a href="../46/46.html">
         <img src="../../book/images/ArrowPrev.png" alt="Предыдущая страница" />
@@ -58,10 +62,11 @@
         <img src="../../book/images/ArrowNext.png" alt="Следующая страница" />
       </a>
     </div>
-    <!-- ==================  Всплывающие окна ======================= -->
+
     <div id="winPopup">
-      <img id="winPopupImage" hspace="5" src="" />
-      <div id="winPopupText"></div>
+      <div id="popupContent">
+        <button id="closeWinPopup">&times;</button>
+      </div>
     </div>
   </body>
 </html>
