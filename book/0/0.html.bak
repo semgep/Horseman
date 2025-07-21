@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Медный всадник</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../book/images/Favicon.ico" type="image/x-icon" />
+    <!-- <link href="../../Styles/style.css" rel="stylesheet" />
+    <script src="../../JS/FuncJS.js"></script> -->
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        overflow: hidden; /* Предотвращает прокрутку, если содержимое чуть больше */
+      }
+      body {
+        display: flex; /* Используем Flexbox для центрирования всего содержимого body */
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0; /* Светло-серый фон, если картинка не закрывает все */
+      }
+
+      /* Контейнер для ссылки и картинки */
+      body > div {
+        /* Теперь этот div будет отвечать за центрирование ссылки с картинкой */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw; /* Занимает всю ширину видимой области */
+        height: 100vh; /* Занимает всю высоту видимой области */
+        /* Уберем text-align: center, так как flexbox лучше справляется с центрированием */
+      }
+
+      /* Ссылка-обертка для картинки */
+      body > div > a {
+        display: flex; /* Делаем ссылку flex-контейнером для центрирования картинки внутри */
+        justify-content: center;
+        align-items: center;
+        width: 100%; /* Ссылка занимает всю доступную ширину родительского div */
+        height: 100%; /* Ссылка занимает всю доступную высоту родительского div */
+      }
+
+      /* Стиль для самого изображения */
+      body > div > a > img {
+        display: block; /* Делаем картинку блочным элементом */
+        object-fit: contain; /* Очень важно: масштабирует изображение, чтобы оно ПОЛНОСТЬЮ поместилось в контейнер, сохраняя пропорции */
+        width: auto; /* Позволяем ширине регулироваться автоматически */
+        height: auto; /* Позволяем высоте регулироваться автоматически */
+
+        /* --- Основные настройки размера для ВСЕХ экранов --- */
+        max-width: 100vw; /* Картинка не будет шире области просмотра */
+        max-height: 100vh; /* Картинка не будет выше области просмотра */
+      }
+
+      /* --- Медиазапрос для телефонов (здесь мы УМЕНЬШАЕМ максимальную ширину картинки) --- */
+      @media (max-width: 768px) {
+        /* Применяем эти стили, когда ширина экрана 768px или меньше */
+        body > div > a > img {
+          max-width: 50vw; /* На телефонах картинка будет занимать максимум 90% ширины экрана */
+          max-height: 50vh; /* И максимум 90% высоты экрана */
+          /* Попробуйте изменить 90vw на 80vw, 75vw или 60vw, чтобы найти оптимальный размер на телефоне */
+        }
+      }
+
+      /* Если вам нужно еще более тонкая настройка для совсем маленьких экранов (например, iPhone 5/SE) */
+      /*
+        @media (max-width: 480px) {
+            body > div > a > img {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+        }
+        */
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <a href="../1/1.html"><img src="0.jpg" /></a>
+    </div>
+  </body>
+</html>
