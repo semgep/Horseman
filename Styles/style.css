@@ -348,3 +348,22 @@ pre {
   color: #000; /* Цвет номера комментария */
   margin-right: 5px;
 }
+/* Стили для кликабельного маркера [i] */
+.my-comment-trigger {
+  color: #0000ee; /* Стандартный синий цвет ссылок */
+  text-decoration: underline; /* Подчеркивание */
+  cursor: pointer; /* Курсор-указатель, чтобы показать интерактивность */
+  margin-left: 2px; /* Небольшой отступ от предыдущего элемента (опционально) */
+}
+
+.my-comment-trigger:hover {
+  color: #551a8b; /* Изменение цвета при наведении (как у посещенной ссылки) */
+  text-decoration: underline;
+}
+
+/* Если вы хотите, чтобы [i] был выше (как верхний индекс),
+ можно добавить vertical-align: super; непосредственно в CSS,
+ а не инлайн-стилем в HTML */
+.my-comment-trigger span {
+  vertical-align: super;
+}

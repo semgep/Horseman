@@ -265,7 +265,7 @@ function setupAuthorComments() {
     if (commentText) {
       commentCount++;
       const listItem = document.createElement("li");
-      listItem.innerHTML = `<strong>${commentNumber}.</strong> ${commentText}`;
+      listItem.innerHTML = `<strong>${commentNumber}</strong> ${commentText}`;
       authorCommentsList.appendChild(listItem);
       // Здесь не нужно удалять атрибут, так как data-атрибуты не вызывают нативных подсказок
     }
