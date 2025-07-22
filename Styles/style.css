@@ -59,6 +59,7 @@ body {
   cursor: pointer; /* Курсор-указатель при наведении */
   background: none;
   border: none;
+  color: red;
   font-size: 1.5em; /* Размер шрифта (для символа &times;) */
   z-index: 1001;
 }
@@ -120,6 +121,29 @@ body {
   height: auto;
   display: block;
   margin: 0 auto;
+}
+/* --- Стили для КОНТЕЙНЕРА КОЛОНОК, которые должны быть рядом (ТОЛЬКО для .text-columns) --- */
+.text-columns {
+  display: flex; /* Включаем Flexbox */
+  flex-wrap: wrap; /* Позволяем элементам переноситься на новую строку */
+  justify-content: center; /* Центрируем колонки по горизонтали */
+  align-items: flex-start; /* Выравниваем элементы по верхнему краю */
+  gap: 10px; /* Отступ между колонками */
+  width: 100%;
+  max-width: 1200px; /* Ограничьте максимальную ширину для больших экранов */
+  margin: 0 auto; /* Центрируйте сам контейнер .text-columns */
+  padding: 20px;
+}
+
+/* --- Стили для ОТДЕЛЬНЫХ ЭЛЕМЕНТОВ КОЛОНКИ (внутри .text-columns) --- */
+.text-columns .textcols-item {
+  color: black;
+  flex: 1 1 48%; /* Базовая ширина 48% для каждой колонки */
+  max-width: calc(50% - 10px); /* Учитываем gap для точного размера */
+  box-sizing: border-box; /* Важно для правильного расчета ширины с padding/border */
+}
+.text-columns .textcols-item .block blockquote pre {
+  text-align: justify;
 }
 
 .block {
@@ -213,6 +237,10 @@ pre {
   .image-columns .textcols-item {
     flex-basis: 100%;
     max-width: 100%;
+  }
+  .text-columns .textcols-item {
+    flex-basis: 100%; /* На телефонах каждая колонка займет 100% ширины */
+    max-width: 100%; /* И максимальная ширина тоже 100% */
   }
   .block {
     padding: 10px; /* Меньше внутренний отступ для блока */
