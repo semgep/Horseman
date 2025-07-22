@@ -90,8 +90,38 @@ body {
 .textcols .textcols-item:first-child {
   margin-right: 0;
 }
+/* --- Стили для КОНТЕЙНЕРА КОЛОНОК ТОЛЬКО С ИЗОБРАЖЕНИЯМИ --- */
+.image-columns {
+  /* Теперь эти стили применяются только к div с классом image-columns */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-/* --- СТИЛИ ДЛЯ БЛОКА С ИЗОБРАЖЕНИЕМ И ТЕКСТОМ (.block) --- */
+/* --- Стили для ОТДЕЛЬНЫХ ЭЛЕМЕНТОВ КОЛОНКИ С ИЗОБРАЖЕНИЯМИ --- */
+.image-columns .textcols-item {
+  /* Теперь эти стили применяются только к textcols-item внутри image-columns */
+  flex: 1 1 48%;
+  max-width: calc(50% - 10px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* --- Стили для САМОЙ КАРТИНКИ внутри колонки с изображениями --- */
+.image-columns .textcols-item img {
+  /* Теперь эти стили применяются только к img внутри image-columns */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .block {
   border: 1px solid lightgray;
   text-align: center;
@@ -163,6 +193,7 @@ pre {
 }
 /* --- МЕДИА-ЗАПРОСЫ ДЛЯ АДАПТИВНОСТИ --- */
 /* Изменяем медиа-запрос для переключения колонок */
+/* --- Медиазапрос для телефонов (только для КОЛОНОК С ИЗОБРАЖЕНИЯМИ) --- */
 @media (max-width: 500px) {
   /* *** ИЗМЕНЕНИЕ: Было 900px, стало 768px *** */
   .textcols {
@@ -179,7 +210,10 @@ pre {
     width: 95%; /* Каждая колонка занимает почти всю ширину */
     min-width: unset; /* Сбрасываем минимальную ширину */
   }
-
+  .image-columns .textcols-item {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
   .block {
     padding: 10px; /* Меньше внутренний отступ для блока */
     max-width: 100%; /* Позволяем ему занимать всю ширину item */

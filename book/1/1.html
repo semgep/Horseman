@@ -1,41 +1,41 @@
-<!DOCTYpE html>
+<!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Медный всадник</title>
-    <link rel="icon" href="../images/Favicon.ico" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="../../style.css" rel="stylesheet">
-    <script src="../../jquery.js"></script>
-    <script src="../../FuncJS.js"></script>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../book/images/Favicon.ico" type="image/x-icon" />
+    <link href="../../Styles/style.css" rel="stylesheet" />
+    <script src="../../JS/FuncJS.js"></script>
+  </head>
 
-<body>
-    <div class="textcols">
-        <div class="textcols-item">
-            <div class="block">
-                <img src="1.jpg" width="73%"> <br>
-            </div>
-        </div>
+  <body>
+    <div class="textcols image-columns">
+      <div class="textcols-item">
+        <div class="block"><img src="1.jpg" width="90%" /></div>
+      </div>
 
-        <div class="textcols-item">
-            <div class="block">
-                <img src="2.jpg" width="79%"> <br>
-            </div>
-        </div>
+      <div class="textcols-item">
+        <div class="block"><img src="2.jpg" /></div>
+      </div>
     </div>
     <!-- 		prev / next -->
-    <div style="text-align: center;">
-        <a href="../0/0.html"> <img src="../images/ArrowPrev.png" align="left" hspace="5px"> </a>
-        <a href="../0/0.html"> <img src="../images/ArrowUp.png" hspace="5px"> </a>
-        <a href="../3/3.html"> <img src="../images/ArrowNext.png" align="right" hspace="5px"> </a>
+    <div class="navigation-bottom">
+      <a href="../0/0.html">
+        <img src="../../book/images/ArrowPrev.png" alt="Предыдущая страница" />
+      </a>
+      <a href="../0/0.html">
+        <img src="../../book/images/ArrowUp.png" alt="К началу" />
+      </a>
+      <a href="../3/3.html">
+        <img src="../../book/images/ArrowNext.png" alt="Следующая страница" />
+      </a>
     </div>
-    <!-- ==================  Всплывающие окна ======================= -->
-    <div id="winPopup">
-        <img id="winPopupImage" align="left" hspace="5" src="">
-        <div id="winPopupText">
-        </div>
-    </div>
-</body>
 
+    <div id="winPopup">
+      <div id="popupContent">
+        <button id="closeWinPopup">&times;</button>
+      </div>
+    </div>
+  </body>
 </html>
