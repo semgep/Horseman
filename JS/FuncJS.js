@@ -71,18 +71,28 @@ function showPopup(event, imageSrc, x, y, commentText) {
       popupContent.style.backgroundColor = "lavender";
       let imageElement = popupContent.querySelector("img"); // Ищем существующую картинку
       if (!imageElement) {
-        // Если картинки нет, создаем её
         imageElement = document.createElement("img");
-        popupContent.appendChild(imageElement); // Добавляем в popupContent
+        // Добавляем imageElement в popupContent ДО textElement, если он уже есть
+        const textContainer = popupContent.querySelector(
+          "#commentTextContainer"
+        );
+        if (textContainer) {
+          popupContent.insertBefore(imageElement, textContainer);
+        } else {
+          popupContent.appendChild(imageElement);
+        }
       }
-      // const imageElement = document.createElement("img");
+      // if (!imageElement) {
+      //   imageElement = document.createElement("img");
+      //   popupContent.appendChild(imageElement);
+      // }
       imageElement.src = imageSrc;
       imageElement.alt = "Изображение комментария";
-      imageElement.style.maxWidth = "40%";
-      imageElement.style.height = "auto";
-      imageElement.style.marginRight = "20px";
-      imageElement.style.float = "left";
-      imageElement.style.marginBottom = "10px";
+      // imageElement.style.maxWidth = "40%";
+      // imageElement.style.height = "auto";
+      // imageElement.style.marginRight = "20px";
+      // imageElement.style.float = "left";
+      // imageElement.style.marginBottom = "10px";
 
       // const textElement = document.createElement("div");
       let textElement = popupContent.querySelector("#commentTextContainer"); // Ищем существующий контейнер для текста
@@ -93,6 +103,23 @@ function showPopup(event, imageSrc, x, y, commentText) {
         popupContent.appendChild(textElement); // Добавляем в popupContent
       }
       textElement.innerHTML = commentText;
+      // ***** НАЧАЛО НОВОЙ ЛОГИКИ В JS *****
+      // Динамическое скрытие текстового блока и управление размером изображения
+      if (commentText.trim() === "") {
+        // Проверяем, пуст ли текст (после удаления пробелов)
+        textElement.style.display = "none"; // Скрываем текстовый блок
+        // Если текстовый блок скрыт, картинка займет всю ширину
+        // благодаря Flexbox и flex-grow (которые нужно добавить в CSS)
+        imageElement.style.flexBasis = "100%"; // Картинка займет всю ширину Flex-контейнера
+        imageElement.style.maxWidth = "100%"; // Убедимся, что она может растянуться
+      } else {
+        textElement.style.display = "block"; // Показываем текстовый блок
+        imageElement.style.flexBasis = "auto"; // Возвращаем обычное поведение Flex-элемента
+        // Здесь вы можете снова ограничить ширину картинки, если нужно,
+        // например, imageElement.style.maxWidth = "40%";
+        // НО ЛУЧШЕ УПРАВЛЯТЬ ЭТИМ ЧЕРЕЗ CSS.
+      }
+      // ***** КОНЕЦ НОВОЙ ЛОГИКИ В JS *****
       // Убедитесь, что кнопка закрытия находится ПЕРЕД динамически добавляемыми элементами
       const closeButton = document.getElementById("closeWinPopup");
       if (closeButton && popupContent.firstChild !== closeButton) {
