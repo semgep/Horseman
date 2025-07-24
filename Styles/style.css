@@ -66,7 +66,7 @@ body {
 #popupContent #commentTextContainer {
   flex-grow: 1; /* Разрешаем текстовому контейнеру занимать все оставшееся пространство */
   /* ... другие стили для текста ... */
-  text-align: left; /* Убеждаемся, что текст выровнен по левому краю */
+  text-align: justify; /* Убеждаемся, что текст выровнен по левому краю */
 }
 
 #closeWinPopup {
@@ -199,7 +199,7 @@ pre {
   white-space: pre-wrap;
   text-align: center; /* **Центрируем каждую строку текста по горизонтали** */
   font-size: 1.1em;
-  line-height: 1.5;
+  line-height: 1.3;
   font-family: Arial, sans-serif; /* Устанавливаем Arial */
   /* font-weight: bold;  */
   color: black; /* Более тёмный цвет для контраста */
